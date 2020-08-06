@@ -1,19 +1,9 @@
-
-from typing import (
-    Callable,
-    Dict,
-    List,
-    Set,
-)
-
-from .cardgame import (
-    Deck,
+from cardgame import (
     Game,
 )
 
-from .deuces_utility import (
+from . import (
     DeucesCard as Card,
-    DeucesUtility as util,
 )
 
 
