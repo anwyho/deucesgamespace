@@ -57,6 +57,7 @@ class FiveCard(ComboType):
             end_rank_ix = None
             end_rank_suit_ix = None
 
+            # TODO: end_rank_ix, end_rank_suit_ix, suit_ix
             sorted_cards = list(sorted(cards, key=lambda c: c.value))
             rank_ixs = list(sorted(cards, key=lambda c: DeucesCard.RANK_TO_ORDER[c.rank]))
             # ILLEGAL: 8 9 10 11 12 - ends on a Rank.TWO (12)
