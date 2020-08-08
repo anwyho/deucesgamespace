@@ -8,7 +8,6 @@ from typing import (
 
 
 class DeucesCard(Card):
-    # RANK_ORDER: List[Rank] = [Rank.THREE, Rank.FOUR, Rank.FIVE, Rank.SIX, Rank.SEVEN, Rank.EIGHT, Rank.NINE, Rank.TEN, Rank.JACK, Rank.QUEEN, Rank.KING, Rank.ACE, Rank.TWO]
     RANK_ORDER: List[Rank] = list(map(lambda r: Rank(r), '3 4 5 6 7 8 9 T J Q K A 2'.split()))
     SUIT_ORDER: List[Suit] = [Suit.DIAMONDS, Suit.CLUBS, Suit.HEARTS, Suit.SPADES]
     RANK_TO_ORDER: Dict[Rank, int] = dict((r, i) for i, r in enumerate(RANK_ORDER))
