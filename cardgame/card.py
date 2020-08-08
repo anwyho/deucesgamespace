@@ -11,6 +11,13 @@ class Suit(Enum):
     SPADES   = '♠'
 
 
+# class Suit(Enum):
+#     DIAMONDS = 'D'
+#     CLUBS    = 'C'
+#     HEARTS   = 'H'
+#     SPADES   = 'S'
+
+
 class Rank(Enum):
     ACE   = 'A'
     TWO   = '2'
@@ -35,4 +42,3 @@ class Card:
 
     def __repr__(self):
         return f"{self.rank.value}{self.suit.value}"
-
