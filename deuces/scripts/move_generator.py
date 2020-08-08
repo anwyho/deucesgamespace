@@ -34,6 +34,7 @@ def generate_all_singles(skip_rank_ix: int = -1) -> Iterable[Tuple[DeucesCard]]:
 
 
 def generate_all_twos(skip_rank_ix: int = -1) -> Iterable[Tuple[DeucesCard]]:
+    # TODO: Not correct ordering - see rhs Spades
     rs = DeucesCard.RANK_ORDER if skip_rank_ix == -1 else (
         DeucesCard.RANK_ORDER[:skip_rank_ix] + DeucesCard.RANK_ORDER[skip_rank_ix+1:])
     for r in rs:
