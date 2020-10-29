@@ -10,7 +10,7 @@ from typing import (
 
 from cardgame.card import (Rank, Suit)
 from deuces import DeucesCard
-from deuces.validators.combos import ComboType
+from deuces.validation.combos import ComboType
 
 
 class FiveCard(ComboType):

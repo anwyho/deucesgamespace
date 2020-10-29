@@ -7,7 +7,7 @@ from typing import (
 )
 
 from deuces import DeucesCard
-from deuces.validators import BaseValidator
+from deuces.validation import BaseValidator
 
 MoveValidator = Callable[[Tuple[DeucesCard], Optional[Tuple[DeucesCard]]], bool]
 

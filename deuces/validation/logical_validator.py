@@ -6,13 +6,13 @@ from typing import (
     Tuple,
 )
 
+import deuces.validation as validation
 from deuces import DeucesCard
-from deuces.validators import (BaseValidator, combos)
 
 MoveValidator = Callable[[Tuple[DeucesCard], Optional[Tuple[DeucesCard]]], bool]
 
 
-class LogicalValidator(BaseValidator, ABC):
+class LogicalValidator(validation.BaseValidator, ABC):
     _MOVE_VALIDATOR_FACTORY: Optional[Dict[int, MoveValidator]] = None
 
     @staticmethod
@@ -71,7 +71,7 @@ class LogicalValidator(BaseValidator, ABC):
 
     @staticmethod
     def _validate_five_card_move(move: Tuple[DeucesCard], against: Optional[Tuple[DeucesCard]] = None) -> bool:
-        move_type = combos.FiveCard.from_hand(move)
+        move_type = validation.combos.FiveCard.from_hand(move)
         if against is None:
-            return not isinstance(move_type, combos.InvalidFiveCardCombo)
-        return combos.FiveCard.from_hand(against) < move_type
+            return not isinstance(move_type, validation.combos.InvalidFiveCardCombo)
+        return validation.combos.FiveCard.from_hand(against) < move_type
