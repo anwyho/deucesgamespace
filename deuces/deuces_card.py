@@ -8,10 +8,14 @@ from typing import (
 
 
 class DeucesCard(Card):
-    RANK_ORDER: List[Rank] = list(map(lambda r: Rank(r), '3 4 5 6 7 8 9 T J Q K A 2'.split()))
-    SUIT_ORDER: List[Suit] = [Suit.DIAMONDS, Suit.CLUBS, Suit.HEARTS, Suit.SPADES]
-    RANK_TO_ORDER: Dict[Rank, int] = dict((r, i) for i, r in enumerate(RANK_ORDER))
-    SUIT_TO_ORDER: Dict[Suit, int] = dict((s, i) for i, s in enumerate(SUIT_ORDER))
+    RANK_ORDER: List[Rank] = list(
+        map(lambda r: Rank(r), '3 4 5 6 7 8 9 T J Q K A 2'.split()))
+    SUIT_ORDER: List[Suit] = [
+        Suit.DIAMONDS, Suit.CLUBS, Suit.HEARTS, Suit.SPADES]
+    RANK_TO_ORDER: Dict[Rank, int] = dict(
+        (r, i) for i, r in enumerate(RANK_ORDER))
+    SUIT_TO_ORDER: Dict[Suit, int] = dict(
+        (s, i) for i, s in enumerate(SUIT_ORDER))
 
     def __init__(self, rank, suit):
         if rank not in DeucesCard.RANK_TO_ORDER.keys():
