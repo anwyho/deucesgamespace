@@ -1,3 +1,4 @@
+from abc import ABC
 from typing import (
     Callable,
     Dict,
@@ -8,21 +9,23 @@ from typing import (
 from deuces import DeucesCard
 from deuces.validators import (BaseValidator, combos)
 
+MoveValidator = Callable[[Tuple[DeucesCard], Optional[Tuple[DeucesCard]]], bool]
 
-class LogicalValidator(BaseValidator):
-    _MOVE_VALIDATOR_FACTORY: Optional[Dict[int, Callable[[Tuple[DeucesCard], Tuple[DeucesCard]], bool]]] = None
+
+class LogicalValidator(BaseValidator, ABC):
+    _MOVE_VALIDATOR_FACTORY: Optional[Dict[int, MoveValidator]] = None
 
     @staticmethod
     def is_valid_move(move: Tuple[DeucesCard], against: Optional[Tuple[DeucesCard]] = None) -> bool:
         move_size: int = len(move)
         if not (1 <= move_size <= 5):
             return False
-        if against is None or move_size == len(against):
+        if against is not None and move_size != len(against):
             return False
-        return LogicalValidator._validate_move(move_size)(move, against)
+        return LogicalValidator._move_validator_factory(move_size)(move, against)
 
     @staticmethod
-    def _validate_move(move_size: int) -> Callable[[Tuple[DeucesCard], Tuple[DeucesCard]], bool]:
+    def _move_validator_factory(move_size: int) -> Dict[int, MoveValidator]:
         if LogicalValidator._MOVE_VALIDATOR_FACTORY is None:
             LogicalValidator._MOVE_VALIDATOR_FACTORY = {
                 1: LogicalValidator._validate_one_card_move,
