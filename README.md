@@ -1,5 +1,6 @@
 There's a game called Deuces I grew up playing. 
 It's also known by Big Two or in Cantonese, Chaw Dai Dee. 
+You can find the rules [here](https://www.pagat.com/climbing/bigtwo.html).
 
 This little side project contains an initial attempt at generating all possible game states for Deuces. 
 There are many, many states, and I'm estimating the final product will be gigabytes worth of game state. 
